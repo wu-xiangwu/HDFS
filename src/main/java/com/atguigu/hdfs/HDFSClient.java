@@ -13,64 +13,66 @@ public class HDFSClient {
 	public static void main(String[] args) throws IOException, InterruptedException, URISyntaxException {
 		Configuration conf = new Configuration();
 		//conf.set("fs.defaultFS", "hdfs://hadoop102:9000");
-		//»ñÈ¡hdfs¿Í»§¶Ë¶ÔÏó
+		//è·å–hdfså®¢æˆ·ç«¯å¯¹è±¡
 		//FileSystem fs = FileSystem.get(conf);
 		FileSystem fs = FileSystem.get(new URI("hdfs://hadoop102:9000"), conf, "atguigu");
 		
-		//ÔÚhdfsÉÏ´´½¨Â·¾¶
+		//åœ¨hdfsä¸Šåˆ›å»ºè·¯å¾„
 		fs.mkdirs(new Path("/0830/dashen/banzhang.txt"));
 		
-		//¹Ø±Õ×ÊÔ´
+		//å…³é—­èµ„æº
 		fs.close();
 		
 		System.out.println("over");
 	}
 	@Test
 	public void testCopyFromLocalFile() throws IOException, InterruptedException, URISyntaxException {
-		//»ñÈ¡fs¶ÔÏó
+		//è·å–fså¯¹è±¡
+		//è·å–fså¯¹è±¡
 		Configuration conf = new Configuration();
 		conf.set("dfs.replication", "2");
 		FileSystem fs = FileSystem.get(new URI("hdfs://hadoop102:9000"), conf , "atguigu");
-		//Ö´ĞĞÉÏ´«API
+		//æ‰§è¡Œä¸Šä¼ API
 		fs.copyFromLocalFile(new Path("d:/0830/2.png"), new Path("/3.png"));
 		
-		//¹Ø±Õ×ÊÔ´
+		//å…³é—­èµ„æº
 		fs.close();
 	}
 	
 	@Test
 	public void testCopyToLocalFile() throws IOException, InterruptedException, URISyntaxException {
-		//»ñÈ¡fs¶ÔÏó
+		//è·å–fså¯¹è±¡
 		Configuration conf = new Configuration();
 		FileSystem fs = FileSystem.get(new URI("hdfs://hadoop102:9000"), conf, "atguigu");
 		
-		//Ö´ĞĞÏÂÔØ²Ù×÷
+		//æ‰§è¡Œä¸‹è½½æ“ä½œ
 		fs.copyToLocalFile(new Path("/2.png"), new Path("d:/"));
-		//¹Ø±Õ×ÊÔ´
+		//å…³é—­èµ„æº
 		fs.close();
 	}
 	
 	@Test
 	public void testDelete() throws IOException, InterruptedException, URISyntaxException {
-		//»ñÈ¡fs¶ÔÏó
+		//è·å–fså¯¹è±¡
 		Configuration conf = new Configuration();
 		FileSystem fs = FileSystem.get(new URI("hdfs://hadoop102:9000"), conf, "atguigu");
 		
-		//Ö´ĞĞÉ¾³ı²Ù×÷
+		//æ‰§è¡Œåˆ é™¤æ“ä½œ
 		fs.delete(new Path("/3.png"), true);
-		//¹Ø±Õ×ÊÔ´
+		//å…³é—­èµ„æº
 		fs.close();
 	}
 	
 	@Test
 	public void testRename() throws IOException, InterruptedException, URISyntaxException {
-		//»ñÈ¡fs¶ÔÏó
+		//è·å–fså¯¹è±¡
 		Configuration conf = new Configuration();
 		FileSystem fs = FileSystem.get(new URI("hdfs://hadoop102:9000"), conf, "atguigu");
 		
-		//Ö´ĞĞÉ¾³ı²Ù×÷
+		//æ‰§è¡Œåˆ é™¤æ“ä½œ
 		fs.rename(new Path("/wc.input"), new Path("/ww.input"));
-		//¹Ø±Õ×ÊÔ´
+		//å…³é—­èµ„æº
 		fs.close();
+		
 	}
 }	
