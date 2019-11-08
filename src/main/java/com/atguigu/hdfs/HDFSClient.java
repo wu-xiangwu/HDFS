@@ -73,6 +73,7 @@ public class HDFSClient {
 		fs.rename(new Path("/wc.input"), new Path("/ww.input"));
 		//关闭资源
 		fs.close();
+		//关闭资源
 		
 	}
 }	
