@@ -19,7 +19,7 @@ public class HDFSClient {
 		
 		//在hdfs上创建路径
 		fs.mkdirs(new Path("/0830/dashen/banzhang.txt"));
-		
+		//
 		//关闭资源
 		fs.close();
 		
